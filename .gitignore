@@ -10,3 +10,15 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# para que no se rompa el proyecto.
+
+dist/
+nbproject/
+build/
+build.*
+
+/dist/
+/nbproject/
+/build/
+/build.*
