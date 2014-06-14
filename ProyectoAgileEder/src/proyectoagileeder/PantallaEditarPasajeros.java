@@ -25,6 +25,15 @@ public class PantallaEditarPasajeros extends javax.swing.JFrame {
     public PantallaEditarPasajeros() {  
         initComponents();
         setTitle("Editar Cliente");
+        btnCancelar.addActionListener(new ManejadorBoton(this));
+        btnAceptar.addActionListener(new ManejadorBoton(this));
+        jtfNombre.addKeyListener(new ManejadorNombre());
+        jtfApellido.addKeyListener(new ManejadorApellido());
+        jtfDocumento.addKeyListener(new ManejadorDocumento());
+        jtfDireccion.addKeyListener(new ManejadorDireccion());
+        jtfNumTelefono.addKeyListener(new ManejadorTelefono());
+        jtfProvincia.addKeyListener(new ManejadorProvincia());
+        jtfCiudad.addKeyListener(new ManejadorCiudad());
     }
 
     /**
@@ -84,10 +93,10 @@ public class PantallaEditarPasajeros extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfApellido)
-                            .addComponent(jtfNombre)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtfNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                            .addComponent(jtfApellido)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -95,13 +104,13 @@ public class PantallaEditarPasajeros extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfProvincia, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtfCiudad, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtfDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jtfDocumento)
-                            .addComponent(jtfNumTelefono)
-                            .addComponent(jtfProvincia)
-                            .addComponent(jtfCiudad)
-                            .addComponent(jtfDireccion))))
+                            .addComponent(jtfNumTelefono))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(114, 114, 114)
@@ -154,37 +163,6 @@ public class PantallaEditarPasajeros extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaEditarPasajeros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaEditarPasajeros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaEditarPasajeros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaEditarPasajeros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PantallaEditarPasajeros().setVisible(true);
-            }
-        });
-    }
     
     private class ManejadorNombre extends KeyAdapter{
         @Override
@@ -262,7 +240,7 @@ public class PantallaEditarPasajeros extends javax.swing.JFrame {
             if(e.getKeyCode()==10){
                 if(jtfDireccion.getText().length()>0){
                     jtfDireccion.setBackground(Color.GREEN);
-                    jtfNumTelefono.requestFocusInWindow();
+                    jtfCiudad.requestFocusInWindow();
                 }else{
                     jtfDireccion.setBackground(Color.RED);
                 }
@@ -271,7 +249,7 @@ public class PantallaEditarPasajeros extends javax.swing.JFrame {
         
         @Override
         public void keyTyped(KeyEvent e){
-            if(Character.isLetter(e.getKeyChar()) || Character.isDigit(e.getKeyChar()) || Character.isSpaceChar(e.getKeyChar())){
+            if(Character.isLetter(e.getKeyChar()) || Character.isDigit(e.getKeyChar()) || Character.isWhitespace(e.getKeyChar())){
             }else{
                 e.setKeyCode(Character.MIN_VALUE);
                 e.consume();

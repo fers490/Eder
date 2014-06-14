@@ -14,6 +14,7 @@ public class ProyectoAgileEder {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        PantallaEditarPasajeros p = new PantallaEditarPasajeros();
+        p.setVisible(true);
     }
 }
